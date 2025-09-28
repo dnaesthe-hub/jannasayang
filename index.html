@@ -117,7 +117,8 @@
       <div class="card">
         <h3>26 September — Janna turns 22!!</h3>
         <p>“أنت أجمل شيء حدث لي"
-”<br><small><em>ant 'ajmal shay' hadath li </em> — You are the most beautiful thing that ever happened to me </small></p>
+”<br><small><em>ant 'ajmal shay' hadath li </em> 
+  — You are the most beautiful thing that ever happened to me </small></p>
         <div class="mini">
           <div><strong>LDR</strong><span>but strong</span></div>
           <div><strong>FIRST MET</strong><span>3/5/2025</span></div>
@@ -171,7 +172,7 @@
     <section id="note" class="container section">
       <h2>Nota Buat Janna</h2>
       <form id="noteForm" class="note-form">
-        <textarea id="noteText" rows="4" placeholder="Tulis nota ringkas di sini… (nanti keluar surat mini dekat atas)"></textarea>
+        <textarea id="noteText" rows="4" placeholder="Tulis nota ringkas di sini… (nanti keluar surat dekat atas)"></textarea>
         <button class="btn primary" type="submit">Tambah Nota</button>
         <span id="noteMsg" class="note-msg" role="status" aria-live="polite"></span>
       </form>
@@ -198,12 +199,12 @@
       const code = (passcodeInput.value || '').trim().toLowerCase();
       if(PASSCODES.includes(code)){
         lettersSection?.classList.remove('hidden');
-        unlockMsg.textContent = 'Unlocked. Love letters dibuka ✨';
+        unlockMsg.textContent = 'Unlocked. Love Letters dibuka ✨';
         unlockMsg.style.color = 'var(--accent)';
         // scroll to letters
         document.getElementById('letters').scrollIntoView({behavior:'smooth'});
       } else {
-        unlockMsg.textContent = 'Kata kunci salah. Cuba lagi ya 💗';
+        unlockMsg.textContent = 'Kata kunci salah. Cuba lagi ya sayang 💗';
         unlockMsg.style.color = '#b04363';
       }
     });
@@ -211,23 +212,22 @@
     // Letters data
     const letters = [
       {
-        title: 'Untuk 26 September',
+        title: '26 September',
         tag: 'Birthday Letter',
         text: `Selamat hari lahir yang ke-22, Janna. Saya bersyukur Allah temukan saya dengan awak.
-Doa saya — semoga hari-hari selepas ini lebih lembut, lebih terang, dan penuh kelegaan untuk awak.
-اللهم بارك لها في عمرها — Allahumma barik laha fi ‘umriha.`
+Saya doakan semoga hari-hari selepas ini lebih baik, lebih tenang, dan penuh kegembiraan untuk awak.`
       },
       {
-        title: 'Tentang Rindu',
+        title: 'Setiap Hari Bersama Awak',
         tag: 'LDR Note',
-        text: `Jarak hanya mengajar kita menghargai hadir.
-Malam-malam yang sunyi, doa saya jadi lebih panjang — menyebut nama awak di antara harapan yang tak pernah putus.`
+        text: `Jarak hanya mengajar kita erti sabar, setia, dan betapa berharganya pertemuan.
+Saya sentiasa berdoa supaya satu hari nanti saya dapat halalkan awak dan dapat menutup jarak di antara kita.`
       },
       {
-        title: 'Janji Kecil',
+        title: 'Janji Saya Pada Awak',
         tag: 'Promise',
-        text: `Saya akan selalu pilih awak — pada hari yang mudah, dan pada hari yang berat.
-Kita mungkin tak sempurna, tapi kita cukup untuk saling melengkapi.`
+        text: `Saya akan selalu pilih awak. Tak kira walau apa pun yang berlaku.
+Kita mungkin tak sempurna, tapi kita saling melengkapi.`
       }
     ];
 
@@ -258,7 +258,7 @@ ${item.text}`);
       e.preventDefault();
       const val = (noteText.value || '').trim();
       if(!val){ noteMsg.textContent = 'Tulis sesuatu dulu ya 💌'; return; }
-      letters.unshift({ title:'Nota Segera', tag:'From Danial', text: val });
+      letters.unshift({ title:'Nota Ringkas', tag:'From Danial', text: val });
       renderLetters();
       noteText.value = '';
       noteMsg.textContent = 'Nota ditambah. Love you!';
