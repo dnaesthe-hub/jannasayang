@@ -266,5 +266,95 @@ ${item.text}`);
       setTimeout(()=> noteMsg.textContent = '', 1800);
     });
   </script>
+<!-- Hidden YouTube player (kept off-screen) -->
+<div id="yt-container" style="position:fixed; left:-9999px; width:0; height:0; overflow:hidden;">
+  <div id="ytplayer"></div>
+</div>
+
+<!-- Music controls -->
+<button id="ytPlayPause"
+  style="position:fixed; right:16px; bottom:68px; z-index:99;
+         padding:10px 14px; border:none; border-radius:8px;
+         background: linear-gradient(90deg,#ff6fa3,#ffb3cd);
+         color:#3b1f29; font-weight:600; cursor:pointer;">
+  ▶️ Play
+</button>
+
+<button id="ytMute"
+  style="position:fixed; right:16px; bottom:16px; z-index:99;
+         padding:10px 14px; border:none; border-radius:8px;
+         background: linear-gradient(90deg,#ff6fa3,#ffb3cd);
+         color:#3b1f29; font-weight:600; cursor:pointer;">
+  🔇 Unmute
+</button>
+
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let player;
+  let isPlaying = false;
+  let isMuted = true;
+
+  // Called by the IFrame API when it’s ready
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('ytplayer', {
+      width: 0,
+      height: 0,
+      videoId: 'ek3S0I5DLHA', // your song video id
+      playerVars: {
+        autoplay: 1,   // try auto-start (muted)
+        controls: 0,
+        loop: 1,
+        playlist: 'ek3S0I5DLHA', // required for single-video looping
+        rel: 0,
+        fs: 0,
+        modestbranding: 1
+      },
+      events: {
+        onReady: (e) => {
+          e.target.mute();      // start muted so autoplay works
+          e.target.playVideo();
+          isPlaying = true;
+          isMuted = true;
+          updateButtons();
+        }
+      }
+    });
+  }
+
+  // Buttons
+  const playPauseBtn = document.getElementById('ytPlayPause');
+  const muteBtn = document.getElementById('ytMute');
+
+  function updateButtons(){
+    playPauseBtn.textContent = isPlaying ? '⏸️ Pause' : '▶️ Play';
+    muteBtn.textContent = isMuted ? '🔇 Unmute' : '🔊 Mute';
+  }
+
+  playPauseBtn.addEventListener('click', () => {
+    if (!player) return;
+    if (isPlaying) {
+      player.pauseVideo();
+      isPlaying = false;
+    } else {
+      player.playVideo();
+      isPlaying = true;
+    }
+    updateButtons();
+  });
+
+  muteBtn.addEventListener('click', () => {
+    if (!player) return;
+    if (isMuted) {
+      player.unMute();        // user click → allowed to unmute
+      player.setVolume(50);   // tweak volume (0–100)
+      isMuted = false;
+    } else {
+      player.mute();
+      isMuted = true;
+    }
+    updateButtons();
+  });
+</script>
 </body>
 </html>
