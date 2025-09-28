@@ -117,7 +117,7 @@
       <div class="card">
         <h3>26 September — Janna turns 22!!</h3>
         <p>“أنت أجمل شيء حدث لي"
-”<br><small><em>ant 'ajmal shay' hadath li </em> 
+”<br><small><em>ant 'ajmal shay' hadath li                                                                </em> 
   
   — You are the most beautiful thing that ever happened to me </small></p>
         <div class="mini">
@@ -162,7 +162,7 @@
 
     <section id="gallery" class="container section">
       <h2>Memories</h2>
-      <p class="muted">Letak gambar awak kat sini nanti 💗.</p>
+      <p class="muted">Letak gambar kat sini nanti 💗.</p>
       <div class="grid">
         <figure><img src="https://picsum.photos/seed/janna1/600/800" alt="Memory 1"><figcaption>you, in every dua</figcaption></figure>
         <figure><img src="https://picsum.photos/seed/janna2/600/800" alt="Memory 2"><figcaption>a quiet smile</figcaption></figure>
@@ -173,7 +173,7 @@
     <section id="note" class="container section">
       <h2>Nota Buat Janna</h2>
       <form id="noteForm" class="note-form">
-        <textarea id="noteText" rows="4" placeholder="Tulis nota ringkas di sini… (nanti keluar surat dekat atas)"></textarea>
+        <textarea id="noteText" rows="4" placeholder="Tulis nota ringkas kat sini… (nanti keluar surat dekat atas)"></textarea>
         <button class="btn primary" type="submit">Tambah Nota</button>
         <span id="noteMsg" class="note-msg" role="status" aria-live="polite"></span>
       </form>
@@ -258,7 +258,7 @@ ${item.text}`);
     noteForm?.addEventListener('submit', (e) => {
       e.preventDefault();
       const val = (noteText.value || '').trim();
-      if(!val){ noteMsg.textContent = 'Tulis sesuatu dulu ya 💌'; return; }
+      if(!val){ noteMsg.textContent = 'Tulis something dulu ya 💌'; return; }
       letters.unshift({ title:'Nota Ringkas', tag:'From Danial', text: val });
       renderLetters();
       noteText.value = '';
