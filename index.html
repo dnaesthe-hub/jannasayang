@@ -497,22 +497,30 @@ ${item.text}`);
   });
 
   noBtn?.addEventListener('click', () => {
-    // show a gentle “come back later” card (no memory)
-    overlay.innerHTML = `
-      <div style="max-width:720px; width:92%; background:#fff; border:1px solid #ffd6e5; border-radius:16px; padding:26px; text-align:center; box-shadow:0 16px 42px rgba(255,122,162,.22);">
-        <h3 style="font-family:'Playfair Display', serif; color:#3b1f29; margin:.25rem 0 .35rem;">Okay, I’ll wait for you 💌</h3>
-        <p style="color:#7d5a66; margin:.25rem auto 1rem; max-width:560px;">
-          May your day be amazing and your heart a little lighter. Come back when you’re ready — I’ll be here sayang.
-        </p>
-        <button id="entranceClose" style="padding:10px 16px; border-radius:10px; border:0; background:linear-gradient(90deg,#ff6fa3,#ffb3cd); color:#3b1f29; font-weight:700; cursor:pointer;">Close</button>
-      </div>`;
-    const closeBtn = document.getElementById('entranceClose');
-    closeBtn?.addEventListener('click', () => {
-      overlay.style.transition = 'opacity .45s ease';
-      overlay.style.opacity = '0';
-      setTimeout(() => overlay.style.display = 'none', 480);
-    });
-  });
+  // Two special links (replace with your actual links)
+  const links = [
+    "https://love.tsonit.com/jannasayang", // 1st link
+    "https://youware.app/project/jannasayang-oh24qb4mnx?invite_code=MCE8FGG9S7"  // 2nd link
+  ];
+
+  // Pick one randomly
+  const randomIndex = Math.floor(Math.random() * links.length);
+  const destination = links[randomIndex];
+
+  // Show a sweet message before redirect
+  overlay.innerHTML = `
+    <div style="max-width:720px; width:92%; background:#fff; border:1px solid #ffd6e5; border-radius:16px; padding:26px; text-align:center; box-shadow:0 16px 42px rgba(255,122,162,.22);">
+      <h3 style="font-family:'Playfair Display', serif; color:#3b1f29; margin:.25rem 0 .35rem;">A little surprise for you, sayang 💗</h3>
+      <p style="color:#7d5a66; margin:.25rem auto 1rem; max-width:560px;">
+        Hold on... something sweet is on the way ✨
+      </p>
+    </div>`;
+
+  // After 2 seconds → redirect
+  setTimeout(() => {
+    window.location.href = destination;
+  }, 2000);
+});
 })();
 </script>
   <script>
