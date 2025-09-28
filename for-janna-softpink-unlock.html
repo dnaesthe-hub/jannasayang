@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For Janna — From Danial</title>
+  <meta name="description" content="A soft-pink corner of the web for Janna — love letters, doa, and memories." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #fff0f5;        /* lavenderblush / soft pink */
+      --surface: #ffe6f0;   /* lighter card */
+      --text: #4a2c3a;      /* rose-brown text */
+      --muted: #7d5a66;
+      --accent: #ff6fa3;    /* main pink */
+      --accent-2: #ffb3cd;  /* lighter pink */
+      --ring: rgba(255,122,162,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(800px 600px at 15% 10%, #ffe0ec 0%, transparent 60%),
+        radial-gradient(900px 700px at 85% 90%, #ffd3e5 0%, transparent 60%),
+        var(--bg);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    .container{width:min(1080px, 92%); margin-inline:auto}
+    header{
+      position:sticky; top:0; z-index:10; backdrop-filter:saturate(120%) blur(8px);
+      background:linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.3), transparent);
+      border-bottom:1px solid #ffd6e5;
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{font-weight:700; letter-spacing:.6px}
+    .brand span{color:var(--accent)}
+    .btn{
+      display:inline-flex; gap:.5rem; align-items:center; justify-content:center;
+      padding:.7rem 1rem; border-radius:12px; border:1px solid transparent;
+      font-weight:600; cursor:pointer; transition:.2s ease;
+    }
+    .btn.primary{ background:linear-gradient(90deg, var(--accent), var(--accent-2)); color:#3b1f29; }
+    .btn.primary:hover{ transform:translateY(-1px); box-shadow:0 10px 28px var(--ring); }
+    .btn.ghost{ border:1px solid var(--accent); color:var(--text); background:transparent }
+    .btn.ghost:hover{ background:#ffeaf2 }
+    /* hero */
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:center; padding:64px 0 28px}
+    h1,h2,h3{font-family:"Playfair Display", Georgia, serif}
+    h1{font-size:clamp(2rem, 3.6vw, 3.2rem); margin:.2rem 0 .5rem}
+    h2{font-size:clamp(1.5rem, 2.6vw, 2.1rem); margin:0 0 .75rem}
+    h3{font-size:clamp(1.1rem, 1.6vw, 1.25rem); margin:.25rem 0 .35rem}
+    .lead{color:var(--muted); font-size:1.05rem}
+    .cta{display:flex; gap:.6rem; margin-top:.75rem}
+    .card{
+      background:linear-gradient(180deg, #fff7fb, #ffe6f0);
+      border:1px solid #ffd6e5;
+      border-radius:16px; padding:16px; box-shadow:0 10px 26px rgba(255,122,162,.16);
+    }
+    .mini{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; margin-top:10px}
+    .mini div{background: #fff; border:1px solid #ffe1ec; border-radius:12px; padding:10px}
+    .mini strong{display:block}
+    /* unlock */
+    .unlock{padding:14px 0 6px}
+    .unlock p{color:var(--muted); margin:.2rem 0 1rem}
+    .unlock-form{display:flex; gap:.6rem; flex-wrap:wrap}
+    .unlock-form input{
+      flex:1 1 240px; padding:.85rem 1rem; border-radius:12px; border:1px solid #ffd6e5; background:#fff; color:var(--text);
+    }
+    .unlock-msg{margin-left:.4rem; color:var(--accent); font-weight:600}
+    /* sections */
+    .section{padding:26px 0}
+    .letters-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:12px}
+    .letter{border:1px solid #ffd6e5; border-radius:14px; padding:14px; background:#fff}
+    .letter .tag{font-size:.75rem; color:var(--muted); margin-bottom:.2rem}
+    .letter p{color:var(--muted)}
+    .read{display:inline-flex; gap:.35rem; align-items:center; color:var(--accent); font-weight:600}
+    .hidden{display:none}
+    /* quotes */
+    .quote{margin:12px 0; padding:16px; border:1px solid #ffd6e5; border-radius:14px; background:#fff}
+    .quote blockquote{margin:0 0 .35rem; font-size:1.15rem}
+    .quote .tr{color:var(--muted); margin:0}
+    /* gallery */
+    .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(170px,1fr)); gap:10px}
+    figure{margin:0; overflow:hidden; border-radius:12px; border:1px solid #ffd6e5; background:#fff}
+    img{display:block; width:100%; height:100%; object-fit:cover; aspect-ratio:3/4}
+    figcaption{padding:8px 10px; color:var(--muted); font-size:.85rem}
+    /* note */
+    .note-form{display:grid; gap:.6rem}
+    textarea{width:100%; min-height:110px; resize:vertical; padding:12px 14px; border-radius:12px; border:1px solid #ffd6e5; background:#fff; color:var(--text)}
+    .note-msg{color:var(--accent)}
+    footer{padding:28px 0 40px; text-align:center; color:var(--muted)}
+    @media (max-width:860px){ .hero{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container nav">
+      <a class="brand" href="#home">for Janna<span>♡</span></a>
+      <a class="btn ghost" href="#letters">Love Letters</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero container">
+      <div>
+        <h1>Hi Janna,</h1>
+        <p class="lead">Ini laman kecil yang Danial bina khas untuk awak — tempat simpan <em>love letters</em>, doa, dan kenangan kita. Walau jarak memisahkan, hati tetap dekat.</p>
+        <div class="cta">
+          <a class="btn primary" href="#unlock">Buka Love Letters</a>
+          <a class="btn ghost" href="#dua">Doa & Quotes</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>26 September — 22</h3>
+        <p>“اللهم بارك لها في عمرها”<br><small><em>Allahumma bārik lahā fī ‘umrihā</em> — Ya Allah, limpahkan keberkatan pada umurnya.</small></p>
+        <div class="mini">
+          <div><strong>LDR</strong><span>but strong</span></div>
+          <div><strong>4 bulan</strong><span>kenal</span></div>
+          <div><strong>3 bulan</strong><span>kawan</span></div>
+          <div><strong>1 bulan</strong><span>couple</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="unlock" class="container section">
+      <h2>Untuk Mata Janna Sahaja</h2>
+      <p>Masukkan kata kunci yang Danial berikan untuk buka surat-surat hati. (Hint: tarikh birthday + sayang)</p>
+      <form id="unlockForm" class="unlock-form">
+        <input id="passcode" type="password" placeholder="Enter passcode" autocomplete="off" />
+        <button class="btn primary" type="submit">Unlock</button>
+        <span id="unlockMsg" class="unlock-msg" role="status" aria-live="polite"></span>
+      </form>
+    </section>
+
+    <section id="letters" class="container section hidden">
+      <h2>Love Letters</h2>
+      <div id="lettersGrid" class="letters-grid"></div>
+    </section>
+
+    <section id="dua" class="container section">
+      <h2>Doa & Quotes</h2>
+      <article class="quote">
+        <blockquote>“وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً”</blockquote>
+        <p class="tr">“And He placed between you love and mercy.” — <small>Ar-Rūm: 21</small></p>
+      </article>
+      <article class="quote">
+        <blockquote>“اللهم اجعل أيامها القادمة خيرًا من أيامها الماضية، واملأ قلبها بالفرح والسكينة.”</blockquote>
+        <p class="tr">O Allah, make her coming days better than those that passed, and fill her heart with joy and serenity.</p>
+      </article>
+      <article class="quote">
+        <blockquote>“الحب نورٌ يهتدي به القلب.”</blockquote>
+        <p class="tr">Love is a light by which the heart finds its way. — <small>inspired by Rumi</small></p>
+      </article>
+    </section>
+
+    <section id="gallery" class="container section">
+      <h2>Gallery</h2>
+      <p class="muted">Letak gambar awak kat sini nanti 💗 (boleh tukar URL <code>picsum.photos</code> ke gambar awak).</p>
+      <div class="grid">
+        <figure><img src="https://picsum.photos/seed/janna1/600/800" alt="Memory 1"><figcaption>you, in every dua</figcaption></figure>
+        <figure><img src="https://picsum.photos/seed/janna2/600/800" alt="Memory 2"><figcaption>a quiet smile</figcaption></figure>
+        <figure><img src="https://picsum.photos/seed/janna3/600/800" alt="Memory 3"><figcaption>soft mornings</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="note" class="container section">
+      <h2>Titip Nota Buat Janna</h2>
+      <form id="noteForm" class="note-form">
+        <textarea id="noteText" rows="4" placeholder="Tulis nota ringkas di sini… (akan muncul sebagai surat mini di atas)"></textarea>
+        <button class="btn primary" type="submit">Tambah Nota</button>
+        <span id="noteMsg" class="note-msg" role="status" aria-live="polite"></span>
+      </form>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>Made with ❤ by Danial for Janna — 26 Sept</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Passcode Unlock
+    const unlockForm = document.getElementById('unlockForm');
+    const passcodeInput = document.getElementById('passcode');
+    const unlockMsg = document.getElementById('unlockMsg');
+    const lettersSection = document.getElementById('letters');
+
+    const PASSCODES = ['janna22','26sept','sayang22','janna2609','2609'];
+
+    unlockForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const code = (passcodeInput.value || '').trim().toLowerCase();
+      if(PASSCODES.includes(code)){
+        lettersSection?.classList.remove('hidden');
+        unlockMsg.textContent = 'Unlocked. Love letters dibuka ✨';
+        unlockMsg.style.color = 'var(--accent)';
+        // scroll to letters
+        document.getElementById('letters').scrollIntoView({behavior:'smooth'});
+      } else {
+        unlockMsg.textContent = 'Kata kunci salah. Cuba lagi ya 💗';
+        unlockMsg.style.color = '#b04363';
+      }
+    });
+
+    // Letters data
+    const letters = [
+      {
+        title: 'Untuk 26 September',
+        tag: 'Birthday Letter',
+        text: `Selamat hari lahir yang ke-22, Janna. Saya bersyukur Allah temukan saya dengan awak.
+Doa saya — semoga hari-hari selepas ini lebih lembut, lebih terang, dan penuh kelegaan untuk awak.
+اللهم بارك لها في عمرها — Allahumma barik laha fi ‘umriha.`
+      },
+      {
+        title: 'Tentang Rindu',
+        tag: 'LDR Note',
+        text: `Jarak hanya mengajar kita menghargai hadir.
+Malam-malam yang sunyi, doa saya jadi lebih panjang — menyebut nama awak di antara harapan yang tak pernah putus.`
+      },
+      {
+        title: 'Janji Kecil',
+        tag: 'Promise',
+        text: `Saya akan selalu pilih awak — pada hari yang mudah, dan pada hari yang berat.
+Kita mungkin tak sempurna, tapi kita cukup untuk saling melengkapi.`
+      }
+    ];
+
+    const grid = document.getElementById('lettersGrid');
+    function renderLetters(){
+      grid.innerHTML = letters.map((l, idx) => `
+        <article class="letter">
+          <div class="tag">${l.tag}</div>
+          <h3>${l.title}</h3>
+          <p>${l.text}</p>
+          <button class="read" onclick="expandLetter(${idx})">❤️ Baca</button>
+        </article>
+      `).join('');
+    }
+    window.expandLetter = (idx) => {
+      const item = letters[idx];
+      alert(`${item.title}
+
+${item.text}`);
+    };
+    renderLetters();
+
+    // Add notes -> becomes a new letter
+    const noteForm = document.getElementById('noteForm');
+    const noteText = document.getElementById('noteText');
+    const noteMsg = document.getElementById('noteMsg');
+    noteForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = (noteText.value || '').trim();
+      if(!val){ noteMsg.textContent = 'Tulis sesuatu dulu ya 💌'; return; }
+      letters.unshift({ title:'Nota Segera', tag:'From Danial', text: val });
+      renderLetters();
+      noteText.value = '';
+      noteMsg.textContent = 'Nota ditambah. Love you!';
+      setTimeout(()=> noteMsg.textContent = '', 1800);
+    });
+  </script>
+</body>
+</html>
