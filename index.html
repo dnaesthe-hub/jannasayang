@@ -108,7 +108,7 @@
     <section class="hero container">
       <div>
         <h1>Hi Sayang,</h1>
-        <p class="lead">Ini saya bina khas untuk awak. Tempat simpan <em>love letters</em>, doa, dan kenangan kita. Walau jarak memisahkan, hati kita tetap dekat.</p>
+        <p class="lead">Ini saya bina khas untuk awak. Tempat simpan <em>love letters</em>, doa, dan kenangan kita. Walaupun jarak memisahkan, hati kita tetap dekat.</p>
         <div class="cta">
           <a class="btn primary" href="#unlock">Buka Love Letters</a>
           <a class="btn ghost" href="#dua">Doa & Quotes</a>
@@ -131,7 +131,7 @@
 
     <section id="unlock" class="container section">
       <h2>Untuk Janna Sahaja</h2>
-      <p>Masukkan kata kunci yang Danial berikan untuk buka Love Letters. (Hint: tarikh birthday)</p>
+      <p>Masukkan kata kunci yang Danial berikan untuk buka Love Letters.</p>
       <form id="unlockForm" class="unlock-form">
         <input id="passcode" type="password" placeholder="Enter passcode" autocomplete="off" />
         <button class="btn primary" type="submit">Unlock</button>
@@ -156,7 +156,7 @@
       </article>
       <article class="quote">
         <blockquote>“الحب نورٌ يهتدي به القلب.”</blockquote>
-        <p class="tr">Love is a light by which the heart finds its way. — </small></p>
+        <p class="tr">Love is a light by which the heart finds its way. </small></p>
       </article>
     </section>
 
@@ -205,7 +205,8 @@
         // scroll to letters
         document.getElementById('letters').scrollIntoView({behavior:'smooth'});
       } else {
-        unlockMsg.textContent = 'Kata kunci salah. Cuba lagi ya sayang 💗';
+        unlockMsg.textContent = 'Kata kunci salah. Cuba lagi ya sayang 💗 
+          (Hint: tarikh birthday)';
         unlockMsg.style.color = '#b04363';
       }
     });
