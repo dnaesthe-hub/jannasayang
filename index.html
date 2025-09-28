@@ -97,6 +97,47 @@
   </style>
 </head>
 <body>
+  <!-- ✨ Sweet Entrance Overlay (shows every visit) -->
+<div id="entranceOverlay" style="position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; overflow:hidden; background:radial-gradient(1200px 800px at 20% 10%, #ffe8f2 0%, transparent 60%), radial-gradient(1200px 900px at 80% 90%, #ffd6e8 0%, transparent 60%), rgba(255,246,250,.95);">
+  <!-- floating hearts -->
+  <div class="float-hearts" style="position:absolute; inset:0; pointer-events:none; opacity:.45;">
+    <div style="position:absolute; left:12%; bottom:-40px; width:14px; height:14px; background:#ff9ec5; transform:rotate(45deg); animation:rise 9s linear infinite;"></div>
+    <div style="position:absolute; left:32%; bottom:-40px; width:10px; height:10px; background:#ff6fa3; transform:rotate(45deg); animation:rise 8s 1s linear infinite;"></div>
+    <div style="position:absolute; left:52%; bottom:-40px; width:16px; height:16px; background:#ffb3cd; transform:rotate(45deg); animation:rise 11s .5s linear infinite;"></div>
+    <div style="position:absolute; left:72%; bottom:-40px; width:12px; height:12px; background:#ff89b5; transform:rotate(45deg); animation:rise 10s 2s linear infinite;"></div>
+    <div style="position:absolute; left:88%; bottom:-40px; width:9px;  height:9px;  background:#ffa8c8; transform:rotate(45deg); animation:rise 7s 3s linear infinite;"></div>
+  </div>
+
+  <div style="max-width:860px; width:92%; background:linear-gradient(180deg, #ffffff, #fff7fb); border:1px solid #ffd6e5; border-radius:18px; box-shadow:0 26px 60px rgba(255,122,162,.25); padding:28px 22px; text-align:center; position:relative;">
+    <div style="font-family:'Playfair Display', serif; font-size:1rem; color:#7d5a66; letter-spacing:.15em; text-transform:uppercase;">for Janna</div>
+    <h2 style="font-family:'Playfair Display', serif; font-size:2rem; margin:.25rem 0 .35rem; color:#3b1f29;">Before you come in…</h2>
+
+    <!-- typewriter line -->
+    <p id="typeLine" style="margin:.5rem auto 1rem; max-width:620px; color:#7d5a66; font-size:1.05rem; line-height:1.7;">
+      <span class="cursor" style="border-right:2px solid #ff6fa3; padding-right:2px;"></span>
+    </p>
+
+    <!-- tiny promise line -->
+    <p style="margin:.1rem auto 1rem; color:#b04363; font-size:.95rem;">“وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً” — Ar-Rūm: 21</p>
+
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:.75rem;">
+      <button id="entranceYes" style="padding:12px 18px; border-radius:12px; border:0; background:linear-gradient(90deg,#ff6fa3,#ffb3cd); color:#3b1f29; font-weight:700; cursor:pointer; box-shadow:0 10px 28px rgba(255,122,162,.35);">Proceed</button>
+      <button id="entranceNo"  style="padding:12px 18px; border-radius:12px; border:1px solid #ffd6e5; background:#fff; color:#7d5a66; font-weight:600; cursor:pointer;">Not today</button>
+    </div>
+
+    <!-- soft hint -->
+    <p style="color:#a2556f; font-size:.85rem; margin-top:12px;">(psst… you’ll need a passcode later to open the Love Letters 💌)</p>
+  </div>
+</div>
+
+<!-- keyframes for floating hearts -->
+<style>
+@keyframes rise{
+  0%   { transform:translateY(0) rotate(45deg) scale(1); opacity:.2; }
+  30%  { opacity:.45; }
+  100% { transform:translateY(-120vh) rotate(45deg) scale(1.25); opacity:0; }
+}
+</style>
   <header>
     <nav class="container nav">
       <a class="brand" href="#home">for Janna<span>♡</span></a>
@@ -355,6 +396,61 @@ ${item.text}`);
     }
     updateButtons();
   });
+</script>
+  <script>
+/* Sweet Entrance — shows every time (no remembering) */
+(function(){
+  const overlay = document.getElementById('entranceOverlay');
+  const yesBtn  = document.getElementById('entranceYes');
+  const noBtn   = document.getElementById('entranceNo');
+
+  // Typewriter effect (soft, short, heartfelt)
+  const line = "This little place is yours — for love letters, dua, and the kind of quiet that feels like home.";
+  const target = document.getElementById('typeLine');
+  const cursor = target?.querySelector('.cursor');
+  let i = 0;
+  function typeNext(){
+    if(!target) return;
+    target.innerHTML = line.slice(0, i) + '<span class="cursor" style="border-right:2px solid #ff6fa3; padding-right:2px;"></span>';
+    i++;
+    if(i <= line.length) setTimeout(typeNext, 32);
+    else setInterval(() => {
+      if(!target) return;
+      const el = target.querySelector('.cursor');
+      if(el) el.style.visibility = (el.style.visibility === 'hidden') ? 'visible' : 'hidden';
+    }, 500);
+  }
+  typeNext();
+
+  // Buttons
+  yesBtn?.addEventListener('click', () => {
+    // fade out overlay every visit (no memory)
+    overlay.style.transition = 'opacity .45s ease';
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.style.display = 'none', 480);
+    // optional: scroll to unlock
+    const unlock = document.getElementById('unlock');
+    if (unlock) unlock.scrollIntoView({behavior:'smooth'});
+  });
+
+  noBtn?.addEventListener('click', () => {
+    // show a gentle “come back later” card (no memory)
+    overlay.innerHTML = `
+      <div style="max-width:720px; width:92%; background:#fff; border:1px solid #ffd6e5; border-radius:16px; padding:26px; text-align:center; box-shadow:0 16px 42px rgba(255,122,162,.22);">
+        <h3 style="font-family:'Playfair Display', serif; color:#3b1f29; margin:.25rem 0 .35rem;">Okay, we’ll wait for you 💌</h3>
+        <p style="color:#7d5a66; margin:.25rem auto 1rem; max-width:560px;">
+          May your evening be soft and your heart a little lighter. Come back when you’re ready — I’ll be here.
+        </p>
+        <button id="entranceClose" style="padding:10px 16px; border-radius:10px; border:0; background:linear-gradient(90deg,#ff6fa3,#ffb3cd); color:#3b1f29; font-weight:700; cursor:pointer;">Close</button>
+      </div>`;
+    const closeBtn = document.getElementById('entranceClose');
+    closeBtn?.addEventListener('click', () => {
+      overlay.style.transition = 'opacity .45s ease';
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.style.display = 'none', 480);
+    });
+  });
+})();
 </script>
 </body>
 </html>
